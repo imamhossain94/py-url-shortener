@@ -1,5 +1,4 @@
 import os
-
 import requests
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,4 +20,3 @@ def cuttly(url):
 shortenUrl = cuttly("https://towardsdatascience.com/best-apis-for-url-shortening-using-python-2db09d1f86f0")
 
 print(shortenUrl)   # https://cutt.ly/8TrzX2Q https://cutt.ly/LTrxAtE
-
