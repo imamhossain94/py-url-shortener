@@ -1,16 +1,24 @@
-# This is a sample Python script.
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# https://cutt.ly/
+# Create Api Key
+def cuttly(url):
+    api_key = os.environ.get('CUTTLY_API', '')
+    api_url = f"https://cutt.ly/api/api.php?key={api_key}&short={url}"
+    data = requests.get(api_url).json()["url"]
+    if data["status"] == 7:
+        shortened_url = data["shortLink"]
+        return shortened_url
+    else:
+        return "error"
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+shortenUrl = cuttly("https://towardsdatascience.com/best-apis-for-url-shortening-using-python-2db09d1f86f0")
+
+print(shortenUrl)   # https://cutt.ly/8TrzX2Q https://cutt.ly/LTrxAtE
+
