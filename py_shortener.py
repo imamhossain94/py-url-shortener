@@ -1,5 +1,6 @@
 import os
 import pyshorteners
+import urlexpander
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -15,7 +16,7 @@ def adf_ly():   # 50% Working
 
 def bit_ly():   # Not Working
     s = pyshorteners.Shortener(api_key=os.environ.get('BIT_API_KEY', ''))
-    x = s.bitly.short('http://www.google.com')
+    x = s.bitly.short('http://google.com')
     print(x)
     # y = s.bitly.expand('https://bit.ly/TEST')
     # print(y)
@@ -100,4 +101,4 @@ def tiny_cc():  # Working
     y = s.tinyurl.expand('https://tinyurl.com/8wa5w2o')
     print(y)
 
-tiny_cc()
+adf_ly()
